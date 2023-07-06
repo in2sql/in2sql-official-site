@@ -57,7 +57,8 @@
   }
 
   &_item {
-    &:hover {
+    &:hover,
+    &-active {
       .navbar_label {
         border-color: #b6bcc3;
       }
