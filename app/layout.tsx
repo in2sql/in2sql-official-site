@@ -11,6 +11,7 @@ export const metadata = {
 import s from './layout.module.scss'
 import clsx from 'clsx'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function RootLayout({
   children,
@@ -26,10 +27,24 @@ export default function RootLayout({
             background: '#000',
           }}
         >
-          <div className={s.header_item}>
-            <div>Контакты</div>
-            <div>Блог</div>
-          </div>
+          <nav className={clsx(s.header_item, s.navbar)}>
+            <Link href="/" className={clsx(s.homeLink, s.navbar_item)}>
+              <Image
+                src="/images/logo.png"
+                alt="icon telegram"
+                width={48}
+                height={48}
+                priority
+              />
+              <div className={s.navbar_label}>in2sql</div>
+            </Link>
+            <Link href="/contacts" className={s.navbar_item}>
+              <div className={s.navbar_label}>Контакты</div>
+            </Link>
+            <Link href="/blog" className={s.navbar_item}>
+              <div className={s.navbar_label}>Блог</div>
+            </Link>
+          </nav>
 
           <div className={s.header_item}>
             <div className={clsx(s.button, s['button-outline'])}>
@@ -91,11 +106,27 @@ export default function RootLayout({
             </div>
 
             <div className={s.separator} />
-            <div className={s.content_item}>
-              <div>Блог</div>
-              <div>Контакты</div>
-              <div>Получить годовую лицензию</div>
-            </div>
+            <nav className={clsx(s.content_item, s.navbar)}>
+              <Link href="/" className={clsx(s.homeLink, s.navbar_item)}>
+                <Image
+                  src="/images/logo.png"
+                  alt="icon telegram"
+                  width={48}
+                  height={48}
+                  priority
+                />
+                <div className={s.navbar_label}>in2sql</div>
+              </Link>
+              <Link href="/contacts" className={s.navbar_item}>
+                <div className={s.navbar_label}>Контакты</div>
+              </Link>
+              <Link href="/blog" className={s.navbar_item}>
+                <div className={s.navbar_label}>Блог</div>
+              </Link>
+              <Link href="/try-free" className={s.navbar_item}>
+                <div className={s.navbar_label}>Получить годовую лицензию</div>
+              </Link>
+            </nav>
 
             <div className={s.content_item}>
               © 2021-2023.ООО «ЧТО ТО», официальный сайт in2sql. Передавая нам
