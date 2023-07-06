@@ -11,7 +11,7 @@ export const metadata = {
 import s from './layout.module.scss'
 import clsx from 'clsx'
 import Image from 'next/image'
-import { Navbar } from './navbar'
+import { Navbar } from './components/navbar'
 
 export default function RootLayout({
   children,
