@@ -2,6 +2,7 @@
   display: flex;
   width: 100%;
   gap: 2rem;
+  padding-top: 100px;
 }
 
 .textContainer {
@@ -16,6 +17,8 @@
 .image {
   flex: 1;
   flex-shrink: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .title {

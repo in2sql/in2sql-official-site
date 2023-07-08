@@ -13,6 +13,7 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import { Navbar } from './components/navbar'
 import Button from './components/button/button'
+import Link from 'next/link'
 
 export default function RootLayout({
   children,
@@ -29,11 +30,15 @@ export default function RootLayout({
 
           <div className={s.header_item}>
             <Button outline>Попробовать бесплатно</Button>
-            <Button main>Получить 1 год бесплатно</Button>
+            <Button main>
+              <Link href={'/try-free'}>Получить 1 год бесплатно</Link>
+            </Button>
           </div>
         </header>
 
-        {children}
+        <main className="flex min-h-screen flex-col items-center justify-between">
+          {children}
+        </main>
 
         <footer className={clsx(s.footer)}>
           <div className={clsx(s.content)}>

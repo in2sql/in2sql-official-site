@@ -2,18 +2,21 @@ import React, { FC, ReactNode } from 'react'
 import s from './header.module.scss'
 import Image from 'next/image'
 import Button from '../button/button'
+import clsx from 'clsx'
+import Link from 'next/link'
 
-const Header: FC<{ title: string; renderText: () => ReactNode | string }> = ({
-  title,
-  renderText,
-}) => {
+const Header: FC<{
+  title: string
+  renderText: () => ReactNode | string
+  classNames?: (string | boolean)[]
+  style?: Record<string, string | number>
+}> = ({ title, renderText, classNames = [], style = {} }) => {
   return (
-    <div className={s.header}>
+    <div className={clsx(s.header, ...classNames)} style={style}>
       <div className={s.textContainer}>
         <div className={s.title}>{title}</div>
 
         <div>{renderText()}</div>
-
         <Button
           main
           style={{
@@ -21,7 +24,7 @@ const Header: FC<{ title: string; renderText: () => ReactNode | string }> = ({
             width: 'fit-content',
           }}
         >
-          Получить 1 код бесплатно
+          <Link href={'/try-free'}>Получить 1 год бесплатно</Link>
         </Button>
       </div>
 

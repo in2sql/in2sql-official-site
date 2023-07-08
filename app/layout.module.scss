@@ -8,15 +8,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  padding: 0 10%;
-  padding-top: 2rem;
-  padding-bottom: 1rem;
+  width: 80%;
+  height: 80px;
   backdrop-filter: blur(10px);
 
   z-index: 100;
-  position: sticky;
-  top: 0;
+  position: fixed;
 
   &_item {
     display: flex;
