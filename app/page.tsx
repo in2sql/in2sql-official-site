@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Header from './components/header/header'
 import Teaser from './components/teaser/teaser'
+import Card from './components/card/card'
 
 const headerData = {
   title: 'Excel перестал быть просто таблицей',
@@ -134,7 +135,7 @@ export default function Home() {
           </p>
         </a>
       </div>
-
+      <Card />
       <Teaser />
     </>
   )
