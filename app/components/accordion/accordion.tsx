@@ -32,24 +32,19 @@ const Accordion: FC<{
             })
           }}
         >
-          <div className={s.image}>
-            <Image
-              src="/images/icon-plus.png"
-              alt="plus"
-              width={18}
-              height={16}
-              priority
-            />
+          <div className={s.title}>
+            <span>{itemsState[`${item.id}`] ? '-' : '+'}</span>
+            {item.title}
           </div>
-          <div className={s.content}>
-            <div className={s.title}>{item.title}</div>
-            <div
-              className={clsx(s.text, {
-                [s['text-open']]: itemsState[`${item.id}`],
-              })}
-            >
-              {item.text}
-            </div>
+
+          <div
+            className={
+              itemsState[`${item.id}`]
+                ? clsx(s.content, s['content-open'])
+                : s.content
+            }
+          >
+            {item.text}
           </div>
         </div>
       ))}
