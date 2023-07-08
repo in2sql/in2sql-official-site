@@ -1,4 +1,4 @@
-import './globals.css'
+import './globals.scss'
 import { Roboto } from 'next/font/google'
 
 const inter = Roboto({ subsets: ['cyrillic'], weight: '400' })
@@ -12,6 +12,7 @@ import s from './layout.module.scss'
 import clsx from 'clsx'
 import Image from 'next/image'
 import { Navbar } from './components/navbar'
+import Button from './components/button/button'
 
 export default function RootLayout({
   children,
@@ -21,23 +22,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={clsx(inter.className, s.body)}>
-        <header
-          className={s.header}
-          style={{
-            background: '#000',
-          }}
-        >
+        <header className={s.header}>
           <nav className={clsx(s.header_item, s.navbar)}>
             <Navbar s={s} />
           </nav>
 
           <div className={s.header_item}>
-            <div className={clsx(s.button, s['button-outline'])}>
-              Попробовать бесплатно
-            </div>
-            <div className={(s.button, clsx(s.button, s['button-main']))}>
-              Получить 1 год бесплатно
-            </div>
+            <Button outline>Попробовать бесплатно</Button>
+            <Button main>Получить 1 год бесплатно</Button>
           </div>
         </header>
 
