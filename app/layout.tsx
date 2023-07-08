@@ -11,6 +11,7 @@ export const metadata = {
 import s from './layout.module.scss'
 import clsx from 'clsx'
 import Image from 'next/image'
+import { Navbar } from './components/navbar'
 
 export default function RootLayout({
   children,
@@ -26,10 +27,9 @@ export default function RootLayout({
             background: '#000',
           }}
         >
-          <div className={s.header_item}>
-            <div>Контакты</div>
-            <div>Блог</div>
-          </div>
+          <nav className={clsx(s.header_item, s.navbar)}>
+            <Navbar s={s} />
+          </nav>
 
           <div className={s.header_item}>
             <div className={clsx(s.button, s['button-outline'])}>
@@ -91,11 +91,17 @@ export default function RootLayout({
             </div>
 
             <div className={s.separator} />
-            <div className={s.content_item}>
-              <div>Блог</div>
-              <div>Контакты</div>
-              <div>Получить годовую лицензию</div>
-            </div>
+            <nav className={clsx(s.content_item, s.navbar)}>
+              <Navbar
+                s={s}
+                additionalItems={[
+                  {
+                    path: '/try-free',
+                    label: 'Получить годовую лицензию',
+                  },
+                ]}
+              />
+            </nav>
 
             <div className={s.content_item}>
               © 2021-2023.ООО «ЧТО ТО», официальный сайт in2sql. Передавая нам
