@@ -56,6 +56,8 @@ export default function Home() {
           <Accordion items={faqItems} />
         </div>
 
+        <Card />
+
         <Teaser />
       </div>
     </div>
