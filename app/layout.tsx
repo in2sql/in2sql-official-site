@@ -35,9 +35,7 @@ export default function RootLayout({
             </Button>
           </div>
         </header>
-
         {children}
-
         <footer className={clsx(s.footer)}>
           <div className={clsx(s.content)}>
             <div
