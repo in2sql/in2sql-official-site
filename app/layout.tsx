@@ -23,12 +23,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={clsx(inter.className, s.body)}>
-        <header className={s.header}>
-          <nav className={clsx(s.header_item, s.navbar)}>
+        <header className={s.nav}>
+          <nav className={clsx(s.nav_item, s.navbar)}>
             <Navbar s={s} />
           </nav>
 
-          <div className={s.header_item}>
+          <div className={s.nav_item}>
             <Button outline>Попробовать бесплатно</Button>
             <Button main>
               <Link href={'/try-free'}>Получить 1 год бесплатно</Link>
@@ -36,9 +36,7 @@ export default function RootLayout({
           </div>
         </header>
 
-        <main className="flex min-h-screen flex-col items-center justify-between">
-          {children}
-        </main>
+        {children}
 
         <footer className={clsx(s.footer)}>
           <div className={clsx(s.content)}>

@@ -2,7 +2,9 @@
   display: flex;
   width: 100%;
   gap: 2rem;
+  padding: var(--horizontal-padding);
   padding-top: 100px;
+  color: #ffffff;
 }
 
 .textContainer {
