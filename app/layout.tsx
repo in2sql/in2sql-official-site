@@ -11,6 +11,7 @@ import { Navbar } from './components/navbar'
 import Button from './components/button/button'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 export default function RootLayout({
   children,
@@ -18,6 +19,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const [offset, setOffset] = useState(0)
+  const pathname = usePathname()
+  console.log({ pathname })
 
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset)
@@ -27,13 +30,14 @@ export default function RootLayout({
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  console.log(offset)
   return (
     <html lang="en">
       <body className={clsx(inter.className, s.body)}>
         <header
           className={s.nav}
-          style={{ background: offset > 0 ? 'black' : '' }}
+          style={{
+            background: offset > 0 || pathname === '/contacts' ? 'black' : '',
+          }}
         >
           <nav className={clsx(s.nav_item, s.navbar)}>
             <Navbar s={s} />
