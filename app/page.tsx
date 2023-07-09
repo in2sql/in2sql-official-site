@@ -3,7 +3,6 @@ import Header from './components/header/header'
 import Teaser from './components/teaser/teaser'
 import Accordion from './components/accordion/accordion'
 import s from './page.module.scss'
-import Bar from './components/bar/bar'
 
 const headerData = {
   title: 'Excel перестал быть просто таблицей',

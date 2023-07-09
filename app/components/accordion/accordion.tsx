@@ -33,7 +33,7 @@ const Accordion: FC<{
           }}
         >
           <div className={s.title}>
-            <span>{itemsState[`${item.id}`] ? '-' : '+'}</span>
+            <div className={s.sign}>{itemsState[`${item.id}`] ? '—' : '+'}</div>
             {item.title}
           </div>
 
