@@ -22,17 +22,16 @@ const Accordion: FC<{
   return (
     <div className={s.accordion}>
       {items.map((item) => (
-        <div
-          className={s.item}
-          key={item.id}
-          onClick={() => {
-            setItemsState({
-              ...itemsState,
-              [item.id]: !itemsState[item.id],
-            })
-          }}
-        >
-          <div className={s.title}>
+        <div className={s.item} key={item.id}>
+          <div
+            className={s.title}
+            onClick={() => {
+              setItemsState({
+                ...itemsState,
+                [item.id]: !itemsState[item.id],
+              })
+            }}
+          >
             <div className={s.sign}>{itemsState[`${item.id}`] ? '—' : '+'}</div>
             {item.title}
           </div>
