@@ -1,0 +1,38 @@
+.accordion {
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  width: 100%;
+  color: rgba(13, 13, 13, 0.7);
+  gap: 1rem;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+.content.content-open {
+  height: auto;
+  max-height: 9999px;
+  transition: all 0.5s cubic-bezier(1, 0, 1, 0);
+}
