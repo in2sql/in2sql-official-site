@@ -2,6 +2,7 @@ import Teaser from '../components/teaser/teaser'
 import Image from 'next/image'
 
 import s from './contacts.module.scss'
+import Guard from '../components/guard/guard'
 
 const Contacts = () => {
   return (
@@ -49,20 +50,7 @@ const Contacts = () => {
             </div>
             <button type="submit">Отправить</button>
 
-            <div className={s.guardComponent}>
-              <Image
-                src="/images/icon-guard.svg"
-                alt="guard"
-                width={24}
-                height={24}
-              />
-              <div>Мы гарантируем безопасность и сохранность ваших данных</div>
-            </div>
-
-            <div className={s.bottomText}>
-              Оставляя свои контактные данные, вы разрешаете нам обратиться к
-              вам за обратной связью по нашему продукту.
-            </div>
+            <Guard width={400} />
           </form>
         </div>
         <div className={s.row2}>
