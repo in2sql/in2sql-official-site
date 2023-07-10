@@ -6,7 +6,7 @@ export default function Guard({
   width,
   style = {},
 }: {
-  width: string
+  width?: string | number
   style?: Record<string, string | number>
 }) {
   return (
