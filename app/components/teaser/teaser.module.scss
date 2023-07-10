@@ -1,14 +1,14 @@
 .teaser {
   display: flex;
-  gap: 2rem;
+  gap: 4rem;
   background: #fff;
   color: #0e0e0e;
-  width: 100%;
+  // width: 100%;
 }
 
 .content {
   display: flex;
-  flex: 1;
+  // flex: 1;
   flex-direction: column;
   gap: 2rem;
 }
@@ -49,6 +49,7 @@
 .card {
   display: flex;
   flex-direction: column;
+  width: 230px;
   gap: 0.5rem;
   flex: 1;
 
