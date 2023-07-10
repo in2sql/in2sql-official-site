@@ -17,10 +17,10 @@ export const Navbar: FC<{
       path: '/contacts',
       label: 'Контакты',
     },
-    {
-      path: '/blog',
-      label: 'Блог',
-    },
+    // {
+    //   path: '/blog',
+    //   label: 'Блог',
+    // },
   ]
 
   return (
