@@ -50,7 +50,7 @@ const Contacts = () => {
             </div>
             <button type="submit">Отправить</button>
 
-            <Guard width={400} />
+            <Guard width="100%" />
           </form>
         </div>
         <div className={s.row2}>

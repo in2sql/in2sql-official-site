@@ -2,10 +2,20 @@ import Image from 'next/image'
 
 import s from './guard.module.scss'
 
-export default function Guard({ width }) {
+export default function Guard({
+  width,
+  style = {},
+}: {
+  width: string
+  style?: Record<string, string | number>
+}) {
   return (
-    <>
-      <div className={s.guardComponent} style={{ width: `${width}px` }}>
+    <div
+      style={{
+        width: '100%',
+      }}
+    >
+      <div className={s.guardComponent} style={{ width: `${width}`, ...style }}>
         <Image
           src="/images/icon-guard.svg"
           alt="guard"
@@ -19,6 +29,6 @@ export default function Guard({ width }) {
         обратной
         <br /> связью по нашему продукту.
       </div>
-    </>
+    </div>
   )
 }
