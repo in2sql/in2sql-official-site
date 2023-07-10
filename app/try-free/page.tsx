@@ -39,7 +39,15 @@ const TryFree = () => {
           </div>
 
           <button>Получить лицензию на 1 год</button>
-          <Guard width={982} />
+
+          <div
+            style={{
+              width: '100%',
+              padding: '0 6rem',
+            }}
+          >
+            <Guard width="100%" />
+          </div>
         </form>
       </div>
     </>

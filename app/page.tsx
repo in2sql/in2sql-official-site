@@ -3,6 +3,7 @@ import Header from './components/header/header'
 import Teaser from './components/teaser/teaser'
 import Accordion from './components/accordion/accordion'
 import s from './page.module.scss'
+import MainForm from './main-form'
 
 const headerData = {
   title: 'Excel перестал быть просто таблицей',
@@ -82,6 +83,8 @@ export default function Home() {
             </div>
           ))}
         </div>
+
+        <MainForm />
 
         <div className={s.faqContainer}>
           <div className={s.faq_title}>Часто задаваемые вопросы</div>
