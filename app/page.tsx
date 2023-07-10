@@ -3,9 +3,6 @@ import Header from './components/header/header'
 import Teaser from './components/teaser/teaser'
 import Accordion from './components/accordion/accordion'
 import s from './page.module.scss'
-import Button from './components/button/button'
-import { useForm } from 'react-hook-form'
-import Input from './components/Input/input'
 import MainForm from './main-form'
 
 const headerData = {
