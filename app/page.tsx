@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Header from './components/header/header'
 import Teaser from './components/teaser/teaser'
+import Card from './components/card/card'
 import Accordion from './components/accordion/accordion'
 import s from './page.module.scss'
 import MainForm from './main-form'
@@ -90,6 +91,8 @@ export default function Home() {
           <div className={s.faq_title}>Часто задаваемые вопросы</div>
           <Accordion items={faqItems} />
         </div>
+
+        <Card />
 
         <Teaser />
       </div>

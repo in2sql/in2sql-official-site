@@ -1,0 +1,31 @@
+.sector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+.headers {
+  text-decoration: underline;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+}
+.inline {
+  display: flex;
+  justify-content: space-between;
+
+  gap: 1rem;
+}
+.block {
+  padding: 32px;
+  background-color: #f5f7f9;
+}
+.main {
+  background-color: #ffffff;
+  color: #0e0e0e;
+  padding: 0px 290px;
+}
+.title {
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+}
