@@ -1,0 +1,40 @@
+.card {
+  display: flex;
+  width: calc(50% - 0.5rem);
+  padding: 1rem;
+  border-radius: 4px;
+  background: #f5f7f9;
+  gap: 1rem;
+
+  .content {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: space-around;
+    flex: 4;
+  }
+
+  .title {
+    color: #0e0e0e;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px; /* 118.182% */
+
+    min-width: 297px;
+    width: fit-content;
+    border-bottom: 1px solid #0e0e0e;
+  }
+
+  .description {
+    color: rgba(13, 13, 13, 0.7);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 160% */
+  }
+
+  .image {
+    flex: 1;
+  }
+}
