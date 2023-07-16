@@ -18,7 +18,7 @@ const MainForm = () => {
 
   const [submitData, setSubmitData] = useState({})
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: { mobile: string; email: string }) => {
     console.log({ submitedData: data })
     setSubmitData(data)
   }
