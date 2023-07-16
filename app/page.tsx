@@ -4,6 +4,8 @@ import Teaser from './components/teaser/teaser'
 import Accordion from './components/accordion/accordion'
 import s from './page.module.scss'
 import MainForm from './main-form'
+import Card from './components/card/card'
+import clsx from 'clsx'
 
 const headerData = {
   title: 'Excel перестал быть просто таблицей',
@@ -56,6 +58,63 @@ const faqItems = [
   },
 ]
 
+const whatIsIn2sql = {
+  title: 'Что такое in2sql?',
+  cards: [
+    {
+      id: 0,
+      title: 'Plugin для Excel',
+      description:
+        'Установщик, который расширяет программный код Excel или web приложение которое интегрируется в Excel.',
+      img: {
+        path: '/images/developer.png',
+        size: {
+          w: 96,
+          h: 96,
+        },
+      },
+    },
+    {
+      id: 1,
+      title: 'Простое совместное использвание',
+      description:
+        'Упрощение совместной обработки данных для бизнес пользователей data. Финансисты, Маркетинг и Комплаенс будут иметь удобный доступ к данным.',
+      img: {
+        path: '/images/code.png',
+        size: {
+          w: 96,
+          h: 96,
+        },
+      },
+    },
+    {
+      id: 2,
+      title: 'Сокращение инструментов для редактирования данных',
+      description: 'Избавим вас от MDM, FDQM, CPM, и ETL процессов.',
+      img: {
+        path: '/images/web.png',
+        size: {
+          w: 96,
+          h: 96,
+        },
+      },
+    },
+    {
+      id: 3,
+      title: 'Технологичное решение',
+      description: `Плагины в Excel (Р7/Мой Офис/OpenOffice ) для интеграции c базами данных и серверами приложений (C#/JavaScript).
+Собственный сервер приложений (Python/Pandas/PySpark) для процессинга расчетов.`,
+      img: {
+        path: '/images/settings.png',
+        size: {
+          w: 96,
+          h: 96,
+        },
+      },
+    },
+  ],
+}
+
 export default function Home() {
   return (
     <div className={s.page}>
@@ -84,14 +143,32 @@ export default function Home() {
           ))}
         </div>
 
-        <MainForm />
+        <div className={clsx(s.section, s.whatIs)}>
+          <div className={s.whatIs_title}>{whatIsIn2sql.title}</div>
+          <div className={s.whatIs_cards}>
+            {whatIsIn2sql.cards.map((card) => (
+              <Card
+                key={card.id}
+                title={card.title}
+                description={card.description}
+                image={card.img}
+              />
+            ))}
+          </div>
+        </div>
 
-        <div className={s.faqContainer}>
+        <div className={s.section}>
+          <MainForm />
+        </div>
+
+        <div className={clsx(s.section, s.faq_container)}>
           <div className={s.faq_title}>Часто задаваемые вопросы</div>
           <Accordion items={faqItems} />
         </div>
 
-        <Teaser />
+        <div className={s.section}>
+          <Teaser />
+        </div>
       </div>
     </div>
   )

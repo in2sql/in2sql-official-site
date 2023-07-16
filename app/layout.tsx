@@ -20,7 +20,6 @@ export default function RootLayout({
 }) {
   const [offset, setOffset] = useState(0)
   const pathname = usePathname()
-  console.log({ pathname })
 
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset)
