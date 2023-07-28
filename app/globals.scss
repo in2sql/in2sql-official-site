@@ -21,11 +21,17 @@ body {
   height: 100vh;
   font-size: var(--main-font-size);
 }
+// CSS constants order matters
+@media (max-width: map.get($grid-breakpoints, 'xxl')) {
+  :root {
+    --layout-padding: 0 10%;
+  }
+}
 
 @media (max-width: map.get($grid-breakpoints, 'lg')) {
   :root {
     --main-font-size: 0.75rem;
-    --layout-padding: 0;
+    --layout-padding: 0 0;
   }
 }
 
