@@ -19,17 +19,21 @@ export const Header: FC<{ s: Record<string, string> }> = ({ s }) => {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const [toggleMenu, setToggleMenu] = useState(false)
+  const [isMenuToggled, setIsMenuToggled] = useState(false)
   const [topPos, setTopPos] = useState(-500)
   const navRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    const navHeight = navRef.current?.offsetHeight
-    console.log({ navHeight, navEl: navRef.current })
-    toggleMenu ? setTopPos(0) : navHeight && setTopPos(-navHeight)
-  }, [toggleMenu])
+    const navHeight = navRef.current?.offsetHeight ?? 0
 
-  const handleClick = () => setToggleMenu(false)
+    if (navHeight < 100) return
+
+    isMenuToggled ? setTopPos(0) : setTopPos(-navHeight)
+  }, [isMenuToggled])
+
+  const handleClick = () => {
+    setIsMenuToggled(false)
+  }
 
   return (
     <header
@@ -61,7 +65,7 @@ export const Header: FC<{ s: Record<string, string> }> = ({ s }) => {
 
       <Image
         src={
-          toggleMenu
+          isMenuToggled
             ? '/images/icon-close.svg'
             : '/images/icon-toggle-menu-button.svg'
         }
@@ -70,7 +74,9 @@ export const Header: FC<{ s: Record<string, string> }> = ({ s }) => {
         height={24}
         priority
         className={s.toggleButton}
-        onClick={() => setToggleMenu(!toggleMenu)}
+        onClick={() => {
+          setIsMenuToggled(!isMenuToggled)
+        }}
       />
     </header>
   )

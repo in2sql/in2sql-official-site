@@ -1,11 +1,11 @@
 import Guard from '../components/guard/guard'
-import Header from '../components/header/header'
+import Jumbotron from '../components/jumbotron/jumbotron'
 import s from './try-free.module.scss'
 
 const TryFree = () => {
   return (
     <>
-      <Header
+      <Jumbotron
         title="Заполни анкету и получи 1 год лицензии"
         renderText={() =>
           'Нам нужны эти данные для анализа и улучшения нашего продукта.'
