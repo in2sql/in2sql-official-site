@@ -1,25 +1,10 @@
 @use 'sass:map';
-
 @import './variables';
-
-.body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #ffffff;
-  height: 100vh;
-  font-size: 1rem;
-
-  @media (max-width: map.get($grid-breakpoints, 'xl')) {
-    font-size: 0.75rem;
-  }
-}
 
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20%;
   width: 100%;
   height: 80px;
   backdrop-filter: blur(10px);
@@ -31,6 +16,10 @@
     display: flex;
     gap: 1rem;
   }
+
+  @media (max-width: map.get($grid-breakpoints, 'lg')) {
+    padding: 0 1rem;
+  }
 }
 
 .toggleButton {
@@ -40,7 +29,7 @@
   right: 1rem;
   cursor: pointer;
 
-  @media (max-width: map.get($grid-breakpoints, 'sm')) {
+  @media (max-width: map.get($grid-breakpoints, 'lg')) {
     display: block;
   }
 }
@@ -52,17 +41,13 @@
   justify-content: center;
   padding-top: 2rem;
   justify-self: flex-end;
+  flex-direction: column;
+  gap: 1rem;
 
-  .content {
+  &_item {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-
-    &_item {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
+    align-items: center;
+    gap: 2rem;
   }
 
   .geoLink {
@@ -99,4 +84,14 @@
     height: 1px;
     background: #464649;
   }
+}
+
+.content {
+  padding: 0 20%;
+}
+
+.header,
+.content,
+.footer {
+  padding: var(--layout-padding);
 }
