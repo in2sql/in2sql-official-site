@@ -1,15 +1,24 @@
+@use 'sass:map';
+
+@import './variables';
+
 .body {
   display: flex;
   flex-direction: column;
   align-items: center;
   color: #ffffff;
   height: 100vh;
+  font-size: 1rem;
+
+  @media (max-width: map.get($grid-breakpoints, 'xl')) {
+    font-size: 0.75rem;
+  }
 }
 
-.nav {
+.header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 0 20%;
   width: 100%;
   height: 80px;
@@ -18,37 +27,21 @@
   z-index: 100;
   position: fixed;
 
-  &_item {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-  }
-
   &_buttons {
     display: flex;
     gap: 1rem;
   }
 }
 
-.navbar {
-  .homeLink {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
+.toggleButton {
+  position: absolute;
+  display: none;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
 
-  &_item {
-    &:hover,
-    &-active {
-      .navbar_label {
-        border-color: #b6bcc3;
-      }
-    }
-  }
-
-  &_label {
-    border-bottom: 1px solid transparent;
-    transition: all 300ms linear;
+  @media (max-width: map.get($grid-breakpoints, 'sm')) {
+    display: block;
   }
 }
 

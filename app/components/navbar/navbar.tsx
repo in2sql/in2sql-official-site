@@ -5,11 +5,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FC, ReactNode } from 'react'
+import s from './navbar.module.scss'
 
 export const Navbar: FC<{
-  s: Record<string, string>
   additionalItems?: { path: string; label: string }[]
-}> = ({ s, additionalItems = [] }) => {
+}> = ({ additionalItems = [] }) => {
   const pathname = usePathname()
 
   const items = [
@@ -24,7 +24,7 @@ export const Navbar: FC<{
   ]
 
   return (
-    <>
+    <div className={s.navbar}>
       <Link
         href="/"
         className={clsx(
@@ -57,6 +57,6 @@ export const Navbar: FC<{
           <div className={s.navbar_label}>{item.label}</div>
         </Link>
       ))}
-    </>
+    </div>
   )
 }

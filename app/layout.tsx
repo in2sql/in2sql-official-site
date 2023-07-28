@@ -7,7 +7,7 @@ const inter = Roboto({ subsets: ['cyrillic'], weight: '400' })
 import s from './layout.module.scss'
 import clsx from 'clsx'
 import Image from 'next/image'
-import { Navbar } from './components/navbar'
+import { Navbar } from './components/navbar/navbar'
 import Button from './components/button/button'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -33,23 +33,32 @@ export default function RootLayout({
     <html lang="en">
       <body className={clsx(inter.className, s.body)}>
         <header
-          className={s.nav}
+          className={s.header}
           style={{
             background: offset > 0 || pathname === '/contacts' ? 'black' : '',
           }}
         >
-          <nav className={clsx(s.nav_item, s.navbar)}>
-            <Navbar s={s} />
-          </nav>
+          <Navbar />
 
-          <div className={s.nav_item}>
+          <div className={s.header_buttons}>
             <Button outline>Попробовать бесплатно</Button>
             <Button main>
               <Link href={'/try-free'}>Получить 1 год бесплатно</Link>
             </Button>
           </div>
+
+          <Image
+            src="/images/icon-toggle-menu-button.svg"
+            alt="icon telegram"
+            width={24}
+            height={24}
+            priority
+            className={s.toggleButton}
+          />
         </header>
+
         {children}
+
         <footer className={clsx(s.footer)}>
           <div className={clsx(s.content)}>
             <div
