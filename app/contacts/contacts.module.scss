@@ -30,7 +30,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 69px;
-      padding: 0 20%;
+      padding: var(--layout-padding);
 
       .left {
         height: 678px;

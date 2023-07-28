@@ -3,7 +3,7 @@ import Header from './components/header/header'
 import Teaser from './components/teaser/teaser'
 import Accordion from './components/accordion/accordion'
 import s from './page.module.scss'
-import MainForm from './main-form'
+import MainForm from './components/main-form/main-form'
 import Card from './components/card/card'
 import clsx from 'clsx'
 

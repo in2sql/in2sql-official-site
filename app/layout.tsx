@@ -57,7 +57,7 @@ export default function RootLayout({
           />
         </header>
 
-        <div className={s.content}>{children}</div>
+        {children}
 
         <footer className={clsx(s.footer)}>
           <div
