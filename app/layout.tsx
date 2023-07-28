@@ -1,61 +1,23 @@
-'use client'
-import './globals.scss'
 import { Roboto } from 'next/font/google'
+import './globals.scss'
 
 const inter = Roboto({ subsets: ['cyrillic'], weight: '400' })
 
-import s from './layout.module.scss'
 import clsx from 'clsx'
 import Image from 'next/image'
 import { Navbar } from './components/navbar/navbar'
-import Button from './components/button/button'
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import { usePathname } from 'next/navigation'
+import { Header } from './header'
+import s from './layout.module.scss'
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const [offset, setOffset] = useState(0)
-  const pathname = usePathname()
-
-  useEffect(() => {
-    const onScroll = () => setOffset(window.scrollY)
-    // clean up code
-    window.removeEventListener('scroll', onScroll)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
   return (
     <html lang="en">
       <body className={clsx(inter.className)}>
-        <header
-          className={s.header}
-          style={{
-            background: offset > 0 || pathname === '/contacts' ? 'black' : '',
-          }}
-        >
-          <Navbar />
-
-          <div className={s.header_buttons}>
-            <Button outline>Попробовать бесплатно</Button>
-            <Button main>
-              <Link href={'/try-free'}>Получить 1 год бесплатно</Link>
-            </Button>
-          </div>
-
-          <Image
-            src="/images/icon-toggle-menu-button.svg"
-            alt="icon telegram"
-            width={24}
-            height={24}
-            priority
-            className={s.toggleButton}
-          />
-        </header>
+        <Header s={s} />
 
         {children}
 

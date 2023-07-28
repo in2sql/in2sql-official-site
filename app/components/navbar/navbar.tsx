@@ -4,12 +4,13 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { FC, ReactNode } from 'react'
-import s from './navbar.module.scss'
+import { FC, MouseEventHandler, ReactNode } from 'react'
 
 export const Navbar: FC<{
+  s: Record<string, string>
   additionalItems?: { path: string; label: string }[]
-}> = ({ additionalItems = [] }) => {
+  onClick?: MouseEventHandler<HTMLAnchorElement> | undefined
+}> = ({ s, additionalItems = [], onClick }) => {
   const pathname = usePathname()
 
   const items = [
@@ -24,7 +25,7 @@ export const Navbar: FC<{
   ]
 
   return (
-    <div className={s.navbar}>
+    <>
       <Link
         href="/"
         className={clsx(
@@ -32,6 +33,7 @@ export const Navbar: FC<{
           s.navbar_item,
           pathname === '/' && s['navbar_item-active']
         )}
+        onClick={onClick}
       >
         <Image
           src="/images/logo.png"
@@ -39,11 +41,10 @@ export const Navbar: FC<{
           width={48}
           height={48}
           priority
+          className={s.navbar_logo}
         />
         <div className={s.navbar_label}>in2sql</div>
       </Link>
-
-      {}
 
       {[...items, ...additionalItems].map((item) => (
         <Link
@@ -53,10 +54,11 @@ export const Navbar: FC<{
             s.navbar_item,
             pathname === item.path && s['navbar_item-active']
           )}
+          onClick={onClick}
         >
           <div className={s.navbar_label}>{item.label}</div>
         </Link>
       ))}
-    </div>
+    </>
   )
 }
