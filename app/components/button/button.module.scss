@@ -1,3 +1,7 @@
+@use 'sass:map';
+
+@import '../../variables';
+
 .button {
   border-radius: 6px;
   border: 1px solid transparent;
@@ -8,6 +12,11 @@
   padding: 0 1rem;
   height: 32px;
   width: fit-content;
+  min-width: 233px;
+
+  @media (max-width: map.get($grid-breakpoints, 'xl')) {
+    min-width: 183px;
+  }
 
   &-outline {
     border-color: #b6bcc3;

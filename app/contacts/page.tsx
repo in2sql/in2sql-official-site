@@ -7,7 +7,7 @@ import Guard from '../components/guard/guard'
 const Contacts = () => {
   return (
     <div className={s.wrapper}>
-      <div className={s.subTitle}>Контактные данные</div>
+      <div className={s.title}>Контактные данные</div>
 
       <div className={s.main}>
         <div className={s.row1}>
@@ -35,7 +35,7 @@ const Contacts = () => {
               height={420}
             />
           </div>
-          <form className={s.right}>
+          <form className={s.contactsForm}>
             <div className={s.inputComponent}>
               <label>Электронная почта</label>
               <input />

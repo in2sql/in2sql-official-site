@@ -35,7 +35,7 @@ const Teaser = () => {
 
   return (
     <div className={clsx(s.teaser)}>
-      <div className={s.image}>
+      <div className={s.imageContainer}>
         <Image
           src="/images/teaser.png"
           alt="Teaser"
@@ -47,11 +47,22 @@ const Teaser = () => {
 
       <div className={s.content}>
         <div className={s.header}>
-          <div className={s.header_title}>
-            <span>Попробуй in2sql прямо сейчас</span>
+          <div className={s.header_wrapper}>
+            <div className={s.header_title}>
+              <span>Попробуй in2sql прямо сейчас</span>
+            </div>
+            <div className={s.header_label}>
+              Клиент для интеграции excel c внешними источниками данных.
+            </div>
           </div>
-          <div className={s.header_label}>
-            Клиент для интеграции excel c внешними источниками данных.
+          <div className={s.smallImageContainer}>
+            <Image
+              src="/images/teaser.png"
+              alt="Teaser"
+              width={86}
+              height={72}
+              priority
+            />
           </div>
         </div>
         <div className={s.cards}>

@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react'
+import React, { FC, MouseEventHandler, ReactNode } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 
@@ -9,7 +9,8 @@ const Button: FC<{
   outline?: boolean
   main?: boolean
   style?: Record<string, string | number>
-}> = ({ children, outline, main, style = {} }) => {
+  onClick?: MouseEventHandler<HTMLDivElement> | undefined
+}> = ({ children, outline, main, style = {}, onClick }) => {
   return (
     <div
       className={clsx(s.button, {
@@ -17,6 +18,7 @@ const Button: FC<{
         [s['button-main']]: main,
       })}
       style={style}
+      onClick={onClick}
     >
       {children}
     </div>

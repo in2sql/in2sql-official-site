@@ -2,7 +2,7 @@
 
 import { useForm } from 'react-hook-form'
 import s from './main-form.module.scss'
-import Guard from './components/guard/guard'
+import Guard from '../guard/guard'
 import clsx from 'clsx'
 import { useState } from 'react'
 import Image from 'next/image'

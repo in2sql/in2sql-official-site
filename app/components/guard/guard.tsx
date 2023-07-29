@@ -10,11 +10,7 @@ export default function Guard({
   style?: Record<string, string | number>
 }) {
   return (
-    <div
-      style={{
-        width: '100%',
-      }}
-    >
+    <div className={s.guard}>
       <div className={s.guardComponent} style={{ width: `${width}`, ...style }}>
         <Image
           src="/images/icon-guard.svg"

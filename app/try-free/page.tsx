@@ -1,17 +1,18 @@
 import Guard from '../components/guard/guard'
-import Header from '../components/header/header'
+import Jumbotron from '../components/jumbotron/jumbotron'
 import s from './try-free.module.scss'
 
 const TryFree = () => {
   return (
     <>
-      <Header
-        title="Заполни анкету и получи 1 год лицензии"
-        renderText={() =>
-          'Нам нужны эти данные для анализа и улучшения нашего продукта.'
-        }
-        classNames={[s.header]}
-      />
+      <div className={s.header}>
+        <Jumbotron
+          title="Заполни анкету и получи 1 год лицензии"
+          renderText={() =>
+            'Нам нужны эти данные для анализа и улучшения нашего продукта.'
+          }
+        />
+      </div>
       <div className={s.wrapper}>
         <form>
           <div className={s.inputComponent}>
@@ -40,14 +41,7 @@ const TryFree = () => {
 
           <button>Получить лицензию на 1 год</button>
 
-          <div
-            style={{
-              width: '100%',
-              padding: '0 6rem',
-            }}
-          >
-            <Guard width="100%" />
-          </div>
+          <Guard width="80%" />
         </form>
       </div>
     </>
