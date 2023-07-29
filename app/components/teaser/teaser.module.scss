@@ -93,4 +93,8 @@
   .smallImageContainer {
     display: block;
   }
+
+  .card:last-child {
+    display: none;
+  }
 }
