@@ -163,10 +163,12 @@ export default function Home() {
 
         <div className={clsx(s.section, s.faq_container)}>
           <div className={s.faq_title}>Часто задаваемые вопросы</div>
-          {/* <Accordion items={faqItems} /> */}
+          <Accordion items={faqItems} />
         </div>
 
-        <div className={s.section}>{/* <Teaser /> */}</div>
+        <div className={s.section}>
+          <Teaser />
+        </div>
       </div>
     </div>
   )
