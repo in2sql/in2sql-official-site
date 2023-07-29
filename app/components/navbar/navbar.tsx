@@ -35,15 +35,15 @@ export const Navbar: FC<{
         )}
         onClick={onClick}
       >
-        <Image
+        {/* <Image
           src="/images/logo.png"
           alt="icon telegram"
           width={48}
           height={48}
           priority
           className={s.navbar_logo}
-        />
-        <div className={s.navbar_label}>in2sql</div>
+        /> */}
+        <div className={s.navbar_label}>Главная</div>
       </Link>
 
       {[...items, ...additionalItems].map((item) => (
