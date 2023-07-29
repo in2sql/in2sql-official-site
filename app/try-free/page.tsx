@@ -5,13 +5,14 @@ import s from './try-free.module.scss'
 const TryFree = () => {
   return (
     <>
-      <Jumbotron
-        title="Заполни анкету и получи 1 год лицензии"
-        renderText={() =>
-          'Нам нужны эти данные для анализа и улучшения нашего продукта.'
-        }
-        classNames={[s.header]}
-      />
+      <div className={s.header}>
+        <Jumbotron
+          title="Заполни анкету и получи 1 год лицензии"
+          renderText={() =>
+            'Нам нужны эти данные для анализа и улучшения нашего продукта.'
+          }
+        />
+      </div>
       <div className={s.wrapper}>
         <form>
           <div className={s.inputComponent}>

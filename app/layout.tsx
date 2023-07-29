@@ -68,6 +68,7 @@ export default function RootLayout({
           </div>
 
           <div className={s.separator} />
+
           <nav className={clsx(s.content_item, s.navbar)}>
             <Navbar
               s={s}

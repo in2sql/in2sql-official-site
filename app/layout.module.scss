@@ -18,7 +18,35 @@
   }
 
   @media (max-width: map.get($grid-breakpoints, 'lg')) {
+    height: 56px;
     padding: 0 1rem;
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+
+  .homeLink {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &_item {
+    &:hover,
+    &-active {
+      .navbar_label {
+        border-color: #b6bcc3;
+      }
+    }
+  }
+
+  &_label {
+    border-bottom: 1px solid transparent;
+    transition: all 300ms linear;
   }
 }
 
@@ -30,33 +58,6 @@
   top: 0;
   left: 0;
   transition: all 300ms ease-in;
-
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-
-    .homeLink {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    &_item {
-      &:hover,
-      &-active {
-        .navbar_label {
-          border-color: #b6bcc3;
-        }
-      }
-    }
-
-    &_label {
-      border-bottom: 1px solid transparent;
-      transition: all 300ms linear;
-    }
-  }
 
   @media (max-width: map.get($grid-breakpoints, 'lg')) {
     position: absolute;

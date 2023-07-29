@@ -128,47 +128,43 @@ export default function Home() {
           </>
         )}
         style={{
-          background: 'black',
-          paddingBottom: '3rem',
+          backgroundColor: 'black',
+          paddingBottom: '4rem',
         }}
       />
 
       <div className={s.content}>
-        <div className={s.bars}>
+        {/* <div className={s.bars}>
           {barItems.map((bar) => (
             <div key={bar.id} className={s.bar}>
               <div className={s.bar_title}>{bar.title}</div>
               <div className={s.bar_text}>{bar.text}</div>
             </div>
           ))}
-        </div>
+        </div> */}
 
         <div className={clsx(s.section, s.whatIs)}>
           <div className={s.whatIs_title}>{whatIsIn2sql.title}</div>
           <div className={s.whatIs_cards}>
-            {whatIsIn2sql.cards.map((card) => (
+            {/* {whatIsIn2sql.cards.map((card) => (
               <Card
                 key={card.id}
                 title={card.title}
                 description={card.description}
                 image={card.img}
               />
-            ))}
+            ))} */}
           </div>
         </div>
 
-        <div className={s.section}>
-          <MainForm />
-        </div>
+        <div className={s.section}>{/* <MainForm /> */}</div>
 
         <div className={clsx(s.section, s.faq_container)}>
           <div className={s.faq_title}>Часто задаваемые вопросы</div>
-          <Accordion items={faqItems} />
+          {/* <Accordion items={faqItems} /> */}
         </div>
 
-        <div className={s.section}>
-          <Teaser />
-        </div>
+        <div className={s.section}>{/* <Teaser /> */}</div>
       </div>
     </div>
   )

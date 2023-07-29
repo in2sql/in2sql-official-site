@@ -26,6 +26,7 @@ export const Header: FC<{ s: Record<string, string> }> = ({ s }) => {
   useEffect(() => {
     const navHeight = navRef.current?.offsetHeight ?? 0
 
+    // on the first render it has small height, so it needs this check
     if (navHeight < 100) return
 
     isMenuToggled ? setTopPos(0) : setTopPos(-navHeight)

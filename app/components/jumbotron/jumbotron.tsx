@@ -17,6 +17,7 @@ const Jumbotron: FC<{
         <div className={s.title}>{title}</div>
 
         <div>{renderText()}</div>
+
         <Button
           main
           style={{
@@ -26,21 +27,6 @@ const Jumbotron: FC<{
         >
           <Link href={'/try-free'}>Получить 1 год бесплатно</Link>
         </Button>
-      </div>
-
-      <div className={s.image}>
-        <Image
-          src="/images/logo.png"
-          alt="icon telegram"
-          width={475}
-          height={521}
-          priority
-          style={{
-            width: '100%',
-            maxWidth: '475px',
-            height: 'auto',
-          }}
-        />
       </div>
     </div>
   )
