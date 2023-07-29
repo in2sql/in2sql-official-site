@@ -50,3 +50,9 @@
     line-height: 20px;
   }
 }
+
+@media (max-width: map.get($grid-breakpoints, 'sm')) {
+  .jumbotron {
+    background-position: 94% 28%;
+  }
+}
