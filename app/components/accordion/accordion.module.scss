@@ -35,10 +35,10 @@
   gap: 0.5rem;
 
   .sign {
-    font-size: 1.25rem;
-    width: 20px;
+    min-width: 18px;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 }
 
