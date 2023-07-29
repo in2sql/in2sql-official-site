@@ -28,7 +28,7 @@ export default function RootLayout({
             }}
           >
             <div
-              className={s.footer_item}
+              className={clsx(s.footer_item, s.contacts)}
               style={{
                 flex: 1,
               }}
@@ -60,11 +60,6 @@ export default function RootLayout({
                 />
               </div>
             </div>
-            <div
-              style={{
-                flex: 1,
-              }}
-            ></div>
           </div>
 
           <div className={s.separator} />
@@ -81,7 +76,7 @@ export default function RootLayout({
             />
           </nav>
 
-          <div className={s.content_item}>
+          <div className={clsx(s.content_item, s.copyright)}>
             © 2021-2023.ООО «ЧТО ТО», официальный сайт in2sql. Передавая нам
             свои контактные данные, мы гарантируем безопасность их хранения.
           </div>
