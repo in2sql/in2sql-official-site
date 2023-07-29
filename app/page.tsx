@@ -129,19 +129,19 @@ export default function Home() {
         )}
         style={{
           backgroundColor: 'black',
-          paddingBottom: '4rem',
+          paddingBottom: '6rem',
         }}
       />
 
       <div className={s.content}>
-        {/* <div className={s.bars}>
+        <div className={s.bars}>
           {barItems.map((bar) => (
             <div key={bar.id} className={s.bar}>
               <div className={s.bar_title}>{bar.title}</div>
               <div className={s.bar_text}>{bar.text}</div>
             </div>
           ))}
-        </div> */}
+        </div>
 
         <div className={clsx(s.section, s.whatIs)}>
           <div className={s.whatIs_title}>{whatIsIn2sql.title}</div>

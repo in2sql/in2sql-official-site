@@ -10,7 +10,7 @@
   justify-content: space-between;
 
   background-image: url(/images/logo.png);
-  background-position: 80%;
+  background-position: 70%;
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -42,5 +42,11 @@
   .jumbotron {
     padding: 0 1rem;
     padding-top: 3rem;
+    background-position: 80% 40%;
+    background-size: 40%;
+
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
   }
 }
