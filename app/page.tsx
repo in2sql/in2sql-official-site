@@ -157,7 +157,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={s.section}>{/* <MainForm /> */}</div>
+        <div className={s.section}>
+          <MainForm />
+        </div>
 
         <div className={clsx(s.section, s.faq_container)}>
           <div className={s.faq_title}>Часто задаваемые вопросы</div>
