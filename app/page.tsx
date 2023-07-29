@@ -146,14 +146,14 @@ export default function Home() {
         <div className={clsx(s.section, s.whatIs)}>
           <div className={s.whatIs_title}>{whatIsIn2sql.title}</div>
           <div className={s.whatIs_cards}>
-            {/* {whatIsIn2sql.cards.map((card) => (
+            {whatIsIn2sql.cards.map((card) => (
               <Card
                 key={card.id}
                 title={card.title}
                 description={card.description}
                 image={card.img}
               />
-            ))} */}
+            ))}
           </div>
         </div>
 

@@ -67,9 +67,6 @@
   }
 }
 
-@media (max-width: map.get($grid-breakpoints, 'lg')) {
-}
-
 .whatIs {
   display: flex;
   flex-direction: column;
@@ -86,8 +83,21 @@
 
   &_cards {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 1rem;
+  }
+}
+
+@media (max-width: map.get($grid-breakpoints, 'lg')) {
+  .whatIs {
+    padding: 0 1rem;
+    margin-top: -5rem;
+  }
+
+  .whatIs_cards {
+    flex-direction: column;
+    align-items: center;
   }
 }
 

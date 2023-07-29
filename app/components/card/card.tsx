@@ -21,6 +21,7 @@ const Card: FC<{
           width={image.size.w}
           height={image.size.h}
           priority
+          className={s.image}
         />
       </div>
     </div>
