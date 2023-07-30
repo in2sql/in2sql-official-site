@@ -8,17 +8,30 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+import { errorsMessages } from '@/app/constants'
+
 type SubmitData = {
   mobile: string
   email: string
 }
 
+const schema = yup
+  .object({
+    mobile: yup.string().required(),
+    email: yup.string().required(),
+  })
+  .required()
+
 const MainForm = () => {
-  const { handleSubmit, register } = useForm({
-    defaultValues: {
-      mobile: '+7(',
-      email: '',
-    },
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
   })
 
   const initialState: SubmitData = {
@@ -35,7 +48,7 @@ const MainForm = () => {
   return (
     <form className={s.mainForm} onSubmit={handleSubmit(onSubmit)}>
       <div className={s.title}>
-        {!Object.keys(submitData).length ? (
+        {!submitData.email.length ? (
           <>
             Узнай силу автоматизации баз <br /> данных
           </>
@@ -44,7 +57,7 @@ const MainForm = () => {
         )}
       </div>
 
-      {!Object.keys(submitData).length ? (
+      {!submitData.email.length ? (
         <>
           <div className={s.steps}>
             <div className={s.circles}>
@@ -80,17 +93,19 @@ const MainForm = () => {
             <input
               placeholder="+7(905) - 634 - 44 - 67"
               type="tel"
-              inputMode="numeric"
-              autoComplete="cc-number"
-              {...register('mobile', { required: true })}
-              name="mobile"
-              id="mobile"
+              {...register('mobile')}
             />
+            <p style={{ color: 'red' }}>
+              {errors.mobile?.message && errorsMessages.mobile}
+            </p>
           </div>
 
           <div className={s.input}>
             <label>Электронная почта</label>
-            <input type="email" {...register('email', { required: true })} />
+            <input type="email" {...register('email')} />
+            <p style={{ color: 'red' }}>
+              {errors.email?.message && errorsMessages.email}
+            </p>
           </div>
 
           <div className={s.controlls}>
@@ -112,7 +127,10 @@ const MainForm = () => {
             width={100}
             height={100}
             priority
-            onClick={() => setSubmitData(initialState)}
+            onClick={(e) => {
+              setSubmitData(initialState)
+              reset()
+            }}
           />
           <div>
             Используйте
