@@ -50,16 +50,16 @@ const TryFree = () => {
 
   const onSubmit = (data: SubmitData) => {
     setSubmitData(data)
+    reset()
   }
 
   console.log({ submitData })
 
   const renderErrorMessage = (field: keyof SubmitData) => (
-    <p style={{ color: 'red' }}>
+    <p style={{ color: 'red', fontSize: '0.75rem' }}>
       {errors[field]?.message && errorsMessages[field]}
     </p>
   )
-
   return (
     <>
       <div className={s.header}>

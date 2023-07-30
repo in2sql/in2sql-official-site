@@ -45,6 +45,12 @@ const MainForm = () => {
     setSubmitData(data)
   }
 
+  const renderErrorMessage = (field: keyof SubmitData) => (
+    <p style={{ color: 'red', fontSize: '0.75rem' }}>
+      {errors[field]?.message && errorsMessages[field]}
+    </p>
+  )
+
   return (
     <form className={s.mainForm} onSubmit={handleSubmit(onSubmit)}>
       <div className={s.title}>
@@ -95,17 +101,13 @@ const MainForm = () => {
               type="tel"
               {...register('mobile')}
             />
-            <p style={{ color: 'red' }}>
-              {errors.mobile?.message && errorsMessages.mobile}
-            </p>
+            {renderErrorMessage('mobile')}
           </div>
 
           <div className={s.input}>
             <label>Электронная почта</label>
             <input type="email" {...register('email')} />
-            <p style={{ color: 'red' }}>
-              {errors.email?.message && errorsMessages.email}
-            </p>
+            {renderErrorMessage('email')}
           </div>
 
           <div className={s.controlls}>
