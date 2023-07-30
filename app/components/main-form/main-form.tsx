@@ -8,6 +8,11 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+type SubmitData = {
+  mobile: string
+  email: string
+}
+
 const MainForm = () => {
   const { handleSubmit, register } = useForm({
     defaultValues: {
@@ -16,9 +21,13 @@ const MainForm = () => {
     },
   })
 
-  const [submitData, setSubmitData] = useState({})
+  const initialState: SubmitData = {
+    mobile: '',
+    email: '',
+  }
+  const [submitData, setSubmitData] = useState<SubmitData>(initialState)
 
-  const onSubmit = (data: { mobile: string; email: string }) => {
+  const onSubmit = (data: SubmitData) => {
     console.log({ submitedData: data })
     setSubmitData(data)
   }
@@ -103,11 +112,11 @@ const MainForm = () => {
             width={100}
             height={100}
             priority
-            onClick={() => setSubmitData({})}
+            onClick={() => setSubmitData(initialState)}
           />
           <div>
             Используйте
-            <b> blin4ik@yundex.com </b>в качестве ключа для лицензии. Плагин
+            <b> {submitData.email} </b>в качестве ключа для лицензии. Плагин
             можно скачать тут.
           </div>
         </>
