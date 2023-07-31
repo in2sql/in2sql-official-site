@@ -10,7 +10,8 @@ import Link from 'next/link'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { errorsMessages } from '@/app/constants'
+import { errorsMessages, phoneRegExp } from '@/app/constants'
+import { DecoratedPhoneInput } from '../hook-form-fields'
 
 type SubmitData = {
   mobile: string
@@ -19,7 +20,7 @@ type SubmitData = {
 
 const schema = yup
   .object({
-    mobile: yup.string().required(),
+    mobile: yup.string().matches(phoneRegExp).required(),
     email: yup.string().required(),
   })
   .required()
@@ -30,6 +31,7 @@ const MainForm = () => {
     register,
     reset,
     formState: { errors },
+    control,
   } = useForm({
     resolver: yupResolver(schema),
   })
@@ -96,10 +98,10 @@ const MainForm = () => {
 
           <div className={s.input}>
             <label htmlFor="mobile">Мобильный телефон</label>
-            <input
-              placeholder="+7(905) - 634 - 44 - 67"
-              type="tel"
-              {...register('mobile')}
+            <DecoratedPhoneInput
+              // @ts-ignore-next-line
+              control={control}
+              name="mobile"
             />
             {renderErrorMessage('mobile')}
           </div>

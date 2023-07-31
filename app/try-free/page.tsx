@@ -8,7 +8,8 @@ import { useState } from 'react'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { errorsMessages } from '@/app/constants'
+import { errorsMessages, phoneRegExp } from '@/app/constants'
+import { DecoratedPhoneInput } from '../components/hook-form-fields'
 
 type SubmitData = {
   name: string
@@ -20,7 +21,7 @@ type SubmitData = {
 
 const initialState: SubmitData = {
   name: '',
-  mobile: '+7(',
+  mobile: '',
   email: '',
   company: '',
   job: '',
@@ -28,7 +29,7 @@ const initialState: SubmitData = {
 
 const schema = yup
   .object({
-    mobile: yup.string().required(),
+    mobile: yup.string().matches(phoneRegExp).required(),
     email: yup.string().required(),
     name: yup.string().required(),
     company: yup.string().required(),
@@ -42,6 +43,7 @@ const TryFree = () => {
     register,
     reset,
     formState: { errors },
+    control,
   } = useForm({
     resolver: yupResolver(schema),
   })
@@ -49,6 +51,7 @@ const TryFree = () => {
   const [submitData, setSubmitData] = useState<SubmitData>(initialState)
 
   const onSubmit = (data: SubmitData) => {
+    console.log({ data })
     setSubmitData(data)
     reset()
   }
@@ -79,7 +82,12 @@ const TryFree = () => {
           </div>
           <div className={s.inputComponent}>
             <label>Мобильный телефон</label>
-            <input type="tel" {...register('mobile')} />
+
+            <DecoratedPhoneInput
+              // @ts-ignore-next-line
+              control={control}
+              name="mobile"
+            />
             {renderErrorMessage('mobile')}
           </div>
           <div className={s.inputComponent}>
