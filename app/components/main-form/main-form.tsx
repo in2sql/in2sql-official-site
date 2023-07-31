@@ -45,6 +45,7 @@ const MainForm = () => {
 
   const onSubmit = (data: SubmitData, e?: BaseSyntheticEvent) => {
     sendToGoogleSheet(e)
+    setSubmitData(data)
   }
 
   const renderErrorMessage = (field: keyof SubmitData) => (
