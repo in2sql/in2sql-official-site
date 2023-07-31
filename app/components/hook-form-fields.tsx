@@ -17,6 +17,7 @@ export const DecoratedPhoneInput: FC<DecoratePhoneInputProps> = (props) => (
         {...field}
         inputProps={{
           ref,
+          name: field.name,
           // required: true,
           // autoFocus: false,
         }}

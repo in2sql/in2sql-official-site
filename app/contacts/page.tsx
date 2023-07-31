@@ -1,16 +1,17 @@
 'use client'
 
-import Teaser from '../components/teaser/teaser'
 import Image from 'next/image'
+import Teaser from '../components/teaser/teaser'
 
-import s from './contacts.module.scss'
 import Guard from '../components/guard/guard'
+import s from './contacts.module.scss'
 
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
 import { errorsMessages } from '@/app/constants'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { BaseSyntheticEvent, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useState } from 'react'
+import * as yup from 'yup'
+import { sendToGoogleSheet } from '../handle-form'
 
 type SubmitData = {
   name: string
@@ -44,7 +45,8 @@ const Contacts = () => {
 
   const [submitData, setSubmitData] = useState<SubmitData>(initialState)
 
-  const onSubmit = (data: SubmitData) => {
+  const onSubmit = (data: SubmitData, e?: BaseSyntheticEvent) => {
+    sendToGoogleSheet(e)
     setSubmitData(data)
     reset()
   }

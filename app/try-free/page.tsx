@@ -4,12 +4,13 @@ import { useForm } from 'react-hook-form'
 import Guard from '../components/guard/guard'
 import Jumbotron from '../components/jumbotron/jumbotron'
 import s from './try-free.module.scss'
-import { useState } from 'react'
+import { BaseSyntheticEvent, useState } from 'react'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { errorsMessages, phoneRegExp } from '@/app/constants'
 import { DecoratedPhoneInput } from '../components/hook-form-fields'
+import { sendToGoogleSheet } from '../handle-form'
 
 type SubmitData = {
   name: string
@@ -50,9 +51,10 @@ const TryFree = () => {
 
   const [submitData, setSubmitData] = useState<SubmitData>(initialState)
 
-  const onSubmit = (data: SubmitData) => {
+  const onSubmit = (data: SubmitData, e?: BaseSyntheticEvent) => {
     console.log({ data })
     setSubmitData(data)
+    sendToGoogleSheet(e)
     reset()
   }
 

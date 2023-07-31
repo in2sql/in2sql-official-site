@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import s from './main-form.module.scss'
 import Guard from '../guard/guard'
 import clsx from 'clsx'
-import { useState } from 'react'
+import { BaseSyntheticEvent, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -12,6 +12,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { errorsMessages, phoneRegExp } from '@/app/constants'
 import { DecoratedPhoneInput } from '../hook-form-fields'
+import { sendToGoogleSheet } from '@/app/handle-form'
 
 type SubmitData = {
   mobile: string
@@ -42,9 +43,8 @@ const MainForm = () => {
   }
   const [submitData, setSubmitData] = useState<SubmitData>(initialState)
 
-  const onSubmit = (data: SubmitData) => {
-    console.log({ submitedData: data })
-    setSubmitData(data)
+  const onSubmit = (data: SubmitData, e?: BaseSyntheticEvent) => {
+    sendToGoogleSheet(e)
   }
 
   const renderErrorMessage = (field: keyof SubmitData) => (
