@@ -23,6 +23,8 @@ body {
 }
 
 body .react-tel-input {
+  color: #6b6b6b;
+
   .form-control {
     border: none;
     background-color: transparent;
@@ -31,6 +33,10 @@ body .react-tel-input {
   .flag-dropdown {
     border: none;
     background-color: transparent;
+  }
+
+  .country-list {
+    background-color: #eeeff1;
   }
 }
 // CSS constants order matters
