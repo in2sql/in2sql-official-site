@@ -1,13 +1,13 @@
 import Image from 'next/image'
-import Header from './components/header/header'
+import Jumbotron from './components/jumbotron/jumbotron'
 import Teaser from './components/teaser/teaser'
 import Accordion from './components/accordion/accordion'
 import s from './page.module.scss'
-import MainForm from './main-form'
+import MainForm from './components/main-form/main-form'
 import Card from './components/card/card'
 import clsx from 'clsx'
 
-const headerData = {
+const jumbotronData = {
   title: 'Excel перестал быть просто таблицей',
   text: [
     'Инструмент анализа данных',
@@ -118,18 +118,18 @@ const whatIsIn2sql = {
 export default function Home() {
   return (
     <div className={s.page}>
-      <Header
-        title={headerData.title}
+      <Jumbotron
+        title={jumbotronData.title}
         renderText={() => (
           <>
-            {headerData.text.map((item) => (
+            {jumbotronData.text.map((item) => (
               <div key={item}>{item}</div>
             ))}
           </>
         )}
         style={{
-          background: 'black',
-          paddingBottom: '3rem',
+          backgroundColor: 'black',
+          paddingBottom: '6rem',
         }}
       />
 

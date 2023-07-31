@@ -4,12 +4,13 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { FC, ReactNode } from 'react'
+import { FC, MouseEventHandler, ReactNode } from 'react'
 
 export const Navbar: FC<{
   s: Record<string, string>
   additionalItems?: { path: string; label: string }[]
-}> = ({ s, additionalItems = [] }) => {
+  onClick?: MouseEventHandler<HTMLAnchorElement> | undefined
+}> = ({ s, additionalItems = [], onClick }) => {
   const pathname = usePathname()
 
   const items = [
@@ -32,18 +33,18 @@ export const Navbar: FC<{
           s.navbar_item,
           pathname === '/' && s['navbar_item-active']
         )}
+        onClick={onClick}
       >
-        <Image
+        {/* <Image
           src="/images/logo.png"
           alt="icon telegram"
           width={48}
           height={48}
           priority
-        />
-        <div className={s.navbar_label}>in2sql</div>
+          className={s.navbar_logo}
+        /> */}
+        <div className={s.navbar_label}>Главная</div>
       </Link>
-
-      {}
 
       {[...items, ...additionalItems].map((item) => (
         <Link
@@ -53,6 +54,7 @@ export const Navbar: FC<{
             s.navbar_item,
             pathname === item.path && s['navbar_item-active']
           )}
+          onClick={onClick}
         >
           <div className={s.navbar_label}>{item.label}</div>
         </Link>

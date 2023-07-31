@@ -1,53 +1,116 @@
+'use client'
+
+import { useForm } from 'react-hook-form'
 import Guard from '../components/guard/guard'
-import Header from '../components/header/header'
+import Jumbotron from '../components/jumbotron/jumbotron'
 import s from './try-free.module.scss'
+import { BaseSyntheticEvent, useState } from 'react'
+
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+import { errorsMessages, phoneRegExp } from '@/app/constants'
+import { DecoratedPhoneInput } from '../components/hook-form-fields'
+import { sendToGoogleSheet } from '../handle-form'
+
+type SubmitData = {
+  name: string
+  mobile: string
+  email: string
+  company: string
+  job: string
+}
+
+const initialState: SubmitData = {
+  name: '',
+  mobile: '',
+  email: '',
+  company: '',
+  job: '',
+}
+
+const schema = yup
+  .object({
+    mobile: yup.string().matches(phoneRegExp).required(),
+    email: yup.string().required(),
+    name: yup.string().required(),
+    company: yup.string().required(),
+    job: yup.string().required(),
+  })
+  .required()
 
 const TryFree = () => {
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+    control,
+  } = useForm({
+    resolver: yupResolver(schema),
+  })
+
+  const [submitData, setSubmitData] = useState<SubmitData>(initialState)
+
+  const onSubmit = (data: SubmitData, e?: BaseSyntheticEvent) => {
+    console.log({ data })
+    setSubmitData(data)
+    sendToGoogleSheet(e)
+    reset()
+  }
+
+  console.log({ submitData })
+
+  const renderErrorMessage = (field: keyof SubmitData) => (
+    <p style={{ color: 'red', fontSize: '0.75rem' }}>
+      {errors[field]?.message && errorsMessages[field]}
+    </p>
+  )
   return (
     <>
-      <Header
-        title="Заполни анкету и получи 1 год лицензии"
-        renderText={() =>
-          'Нам нужны эти данные для анализа и улучшения нашего продукта.'
-        }
-        classNames={[s.header]}
-      />
+      <div className={s.header}>
+        <Jumbotron
+          title="Заполни анкету и получи 1 год лицензии"
+          renderText={() =>
+            'Нам нужны эти данные для анализа и улучшения нашего продукта.'
+          }
+        />
+      </div>
       <div className={s.wrapper}>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className={s.inputComponent}>
-            <label>Электронная почта</label>
-            <input />
+            <label>Ваше имя</label>
+            <input type="text" {...register('name')} />
+            {renderErrorMessage('name')}
           </div>
           <div className={s.inputComponent}>
             <label>Мобильный телефон</label>
-            <div style={{ display: 'flex' }}>
-              <span className={s.mobile}>{'+7 ('}</span>
-              <input />
-            </div>
+
+            <DecoratedPhoneInput
+              // @ts-ignore-next-line
+              control={control}
+              name="mobile"
+            />
+            {renderErrorMessage('mobile')}
           </div>
           <div className={s.inputComponent}>
             <label>Электронная почта</label>
-            <input />
+            <input type="email" {...register('email')} />
+            {renderErrorMessage('email')}
           </div>
           <div className={s.inputComponent}>
             <label>Название организации</label>
-            <input />
+            <input type="text" {...register('company')} />
+            {renderErrorMessage('company')}
           </div>
           <div className={s.inputComponent}>
             <label>Ваша должность</label>
-            <input />
+            <input type="text" {...register('job')} />
+            {renderErrorMessage('job')}
           </div>
 
-          <button>Получить лицензию на 1 год</button>
+          <button type="submit">Получить лицензию на 1 год</button>
 
-          <div
-            style={{
-              width: '100%',
-              padding: '0 6rem',
-            }}
-          >
-            <Guard width="100%" />
-          </div>
+          <Guard width="80%" />
         </form>
       </div>
     </>

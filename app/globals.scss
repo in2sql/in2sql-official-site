@@ -1,3 +1,6 @@
+@use 'sass:map';
+@import './variables';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,7 +9,48 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --horizontal-padding: 0 20%;
+  --layout-padding: 0 20%;
+  --main-font-size: 1rem;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ffffff;
+  height: 100vh;
+  font-size: var(--main-font-size);
+}
+
+body .react-tel-input {
+  color: #6b6b6b;
+
+  .form-control {
+    border: none;
+    background-color: transparent;
+    width: auto;
+  }
+  .flag-dropdown {
+    border: none;
+    background-color: transparent;
+  }
+
+  .country-list {
+    background-color: #eeeff1;
+  }
+}
+// CSS constants order matters
+@media (max-width: map.get($grid-breakpoints, 'xxl')) {
+  :root {
+    --layout-padding: 0 10%;
+  }
+}
+
+@media (max-width: map.get($grid-breakpoints, 'lg')) {
+  :root {
+    --main-font-size: 0.75rem;
+    --layout-padding: 0 0;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
