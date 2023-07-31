@@ -21,6 +21,18 @@ body {
   height: 100vh;
   font-size: var(--main-font-size);
 }
+
+body .react-tel-input {
+  .form-control {
+    border: none;
+    background-color: transparent;
+    width: auto;
+  }
+  .flag-dropdown {
+    border: none;
+    background-color: transparent;
+  }
+}
 // CSS constants order matters
 @media (max-width: map.get($grid-breakpoints, 'xxl')) {
   :root {

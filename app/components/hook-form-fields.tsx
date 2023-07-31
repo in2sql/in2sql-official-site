@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { Control, Controller } from 'react-hook-form'
 import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
 
 type DecoratePhoneInputProps = {
   control: Control
@@ -20,9 +21,10 @@ export const DecoratedPhoneInput: FC<DecoratePhoneInputProps> = (props) => (
           // autoFocus: false,
         }}
         country={'ru'}
-        onlyCountries={['ru']}
-        countryCodeEditable={true}
+        // onlyCountries={['ru']}
+        countryCodeEditable={false}
         specialLabel=""
+        // enableSearch
       />
     )}
   />
