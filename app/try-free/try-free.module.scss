@@ -88,5 +88,9 @@
 @media (max-width: map.get($grid-breakpoints, 'lg')) {
   .wrapper {
     padding: 0 1rem;
+
+    form {
+      padding: 2rem 1rem;
+    }
   }
 }
