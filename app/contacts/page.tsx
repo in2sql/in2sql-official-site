@@ -1,10 +1,64 @@
-import Teaser from '../components/teaser/teaser'
-import Image from 'next/image'
+'use client'
 
-import s from './contacts.module.scss'
+import Image from 'next/image'
+import Teaser from '../components/teaser/teaser'
+
 import Guard from '../components/guard/guard'
+import s from './contacts.module.scss'
+
+import { errorsMessages } from '@/app/constants'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { BaseSyntheticEvent, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import * as yup from 'yup'
+import { sendToGoogleSheet } from '../handle-form'
+
+type SubmitData = {
+  name: string
+  email: string
+  appeal: string
+}
+
+const initialState: SubmitData = {
+  name: '',
+  email: '',
+  appeal: '',
+}
+
+const schema = yup
+  .object({
+    email: yup.string().required(),
+    name: yup.string().required(),
+    appeal: yup.string().required(),
+  })
+  .required()
 
 const Contacts = () => {
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  })
+
+  const [submitData, setSubmitData] = useState<SubmitData>(initialState)
+
+  const onSubmit = (data: SubmitData, e?: BaseSyntheticEvent) => {
+    sendToGoogleSheet(e)
+    setSubmitData(data)
+    reset()
+  }
+
+  console.log({ submitData })
+
+  const renderErrorMessage = (field: keyof SubmitData) => (
+    <p style={{ color: 'red', fontSize: '0.75rem' }}>
+      {errors[field]?.message && errorsMessages[field]}
+    </p>
+  )
+
   return (
     <div className={s.wrapper}>
       <div className={s.title}>Контактные данные</div>
@@ -35,18 +89,21 @@ const Contacts = () => {
               height={420}
             />
           </div>
-          <form className={s.contactsForm}>
+          <form className={s.contactsForm} onSubmit={handleSubmit(onSubmit)}>
             <div className={s.inputComponent}>
               <label>Электронная почта</label>
-              <input />
+              <input type="email" {...register('email')} />
+              {renderErrorMessage('email')}
             </div>
             <div className={s.inputComponent}>
-              <label>ФИО</label>
-              <input />
+              <label>Ваше имя</label>
+              <input type="text" {...register('name')} />
+              {renderErrorMessage('name')}
             </div>
             <div className={s.textAreaComponent}>
               <label>Обращение</label>
-              <textarea rows={5}></textarea>
+              <textarea rows={5} {...register('appeal')}></textarea>
+              {renderErrorMessage('appeal')}
             </div>
             <button type="submit">Отправить</button>
 

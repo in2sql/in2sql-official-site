@@ -4,29 +4,60 @@ import { useForm } from 'react-hook-form'
 import s from './main-form.module.scss'
 import Guard from '../guard/guard'
 import clsx from 'clsx'
-import { useState } from 'react'
+import { BaseSyntheticEvent, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+import { errorsMessages, phoneRegExp } from '@/app/constants'
+import { DecoratedPhoneInput } from '../hook-form-fields'
+import { sendToGoogleSheet } from '@/app/handle-form'
+
+type SubmitData = {
+  mobile: string
+  email: string
+}
+
+const schema = yup
+  .object({
+    mobile: yup.string().matches(phoneRegExp).required(),
+    email: yup.string().required(),
+  })
+  .required()
+
 const MainForm = () => {
-  const { handleSubmit, register } = useForm({
-    defaultValues: {
-      mobile: '+7(',
-      email: '',
-    },
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+    control,
+  } = useForm({
+    resolver: yupResolver(schema),
   })
 
-  const [submitData, setSubmitData] = useState({})
+  const initialState: SubmitData = {
+    mobile: '',
+    email: '',
+  }
+  const [submitData, setSubmitData] = useState<SubmitData>(initialState)
 
-  const onSubmit = (data: { mobile: string; email: string }) => {
-    console.log({ submitedData: data })
+  const onSubmit = (data: SubmitData, e?: BaseSyntheticEvent) => {
+    sendToGoogleSheet(e)
     setSubmitData(data)
   }
+
+  const renderErrorMessage = (field: keyof SubmitData) => (
+    <p style={{ color: 'red', fontSize: '0.75rem' }}>
+      {errors[field]?.message && errorsMessages[field]}
+    </p>
+  )
 
   return (
     <form className={s.mainForm} onSubmit={handleSubmit(onSubmit)}>
       <div className={s.title}>
-        {!Object.keys(submitData).length ? (
+        {!submitData.email.length ? (
           <>
             Узнай силу автоматизации баз <br /> данных
           </>
@@ -35,7 +66,7 @@ const MainForm = () => {
         )}
       </div>
 
-      {!Object.keys(submitData).length ? (
+      {!submitData.email.length ? (
         <>
           <div className={s.steps}>
             <div className={s.circles}>
@@ -68,20 +99,18 @@ const MainForm = () => {
 
           <div className={s.input}>
             <label htmlFor="mobile">Мобильный телефон</label>
-            <input
-              placeholder="+7(905) - 634 - 44 - 67"
-              type="tel"
-              inputMode="numeric"
-              autoComplete="cc-number"
-              {...register('mobile', { required: true })}
+            <DecoratedPhoneInput
+              // @ts-ignore-next-line
+              control={control}
               name="mobile"
-              id="mobile"
             />
+            {renderErrorMessage('mobile')}
           </div>
 
           <div className={s.input}>
             <label>Электронная почта</label>
-            <input type="email" {...register('email', { required: true })} />
+            <input type="email" {...register('email')} />
+            {renderErrorMessage('email')}
           </div>
 
           <div className={s.controlls}>
@@ -103,11 +132,14 @@ const MainForm = () => {
             width={100}
             height={100}
             priority
-            onClick={() => setSubmitData({})}
+            onClick={(e) => {
+              setSubmitData(initialState)
+              reset()
+            }}
           />
           <div>
             Используйте
-            <b> blin4ik@yundex.com </b>в качестве ключа для лицензии. Плагин
+            <b> {submitData.email} </b>в качестве ключа для лицензии. Плагин
             можно скачать тут.
           </div>
         </>
