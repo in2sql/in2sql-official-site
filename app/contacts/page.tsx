@@ -67,27 +67,25 @@ const Contacts = () => {
         <div className={s.row1}>
           <div className={s.left}>
             <div>
-              <span style={{ color: '#004077' }}>Тел: </span>+7 (915) 777-00-12
+              <span style={{ color: '#004077' }}>Тел: </span>+7 (903) 157-64-42
             </div>
             <br />
             <div>
               <span style={{ color: '#004077' }}>Почта: </span>
-              dom-rsk2014@yandex.ru
+              erasyuk@gmail.com
             </div>
-            <br /> 141310, Московская область, г. Сергиев Посад,ул. Осипенко д.
-            6<br /> оф. Реквизиты Строительная компания ООО «РСК»
+            <br /> 142181, Московская область, город Подольск, деревня Бережки,
+            тер. Каскад Парк, д. 43, кв. 3
             <br />
-            <br /> ИНН 3301032210
-            <br /> ОГРН 1143339000485
-            <Image
-              src="/images/map.svg"
-              alt="google map"
-              style={{
-                marginTop: '30px',
-              }}
-              width={482}
-              height={420}
-            />
+            <br /> ИНН 5074066799
+            <br /> ОГРН 1205000100997
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d9066.216032739287!2d37.58841528653955!3d55.38323906719255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1zMTQyMTgxLCDQnNC-0YHQutC-0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwg0LPQvtGA0L7QtCDQn9C-0LTQvtC70YzRgdC6LCDQtNC10YDQtdCy0L3RjyDQkdC10YDQtdC20LrQuCwg0YLQtdGALiDQmtCw0YHQutCw0LQg0J_QsNGA0LosINC0LiA0Mywg0LrQsi4gMw!5e0!3m2!1sru!2sru!4v1691763637528!5m2!1sru!2sru"
+              width="482"
+              height="420"
+              style={{ border: '0' }}
+              loading="lazy"
+            ></iframe>
           </div>
           <form className={s.contactsForm} onSubmit={handleSubmit(onSubmit)}>
             <div className={s.inputComponent}>

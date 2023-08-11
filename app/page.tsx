@@ -161,7 +161,10 @@ export default function Home() {
           <MainForm />
         </div>
 
-        <div className={clsx(s.section, s.faq_container)}>
+        <div
+          className={clsx(s.section, s.faq_container)}
+          style={{ display: 'none' }}
+        >
           <div className={s.faq_title}>Часто задаваемые вопросы</div>
           <Accordion items={faqItems} />
         </div>

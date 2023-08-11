@@ -127,7 +127,7 @@ const MainForm = () => {
       ) : (
         <>
           <Image
-            src="/images/checkmark.png"
+            src="/images/checkmark.svg"
             alt="icon telegram"
             width={100}
             height={100}
