@@ -31,7 +31,7 @@ const barItems = [
   {
     id: 3,
     title: 'BI',
-    text: 'Элементы self service BI',
+    text: 'Элементы Self Service BI',
   },
   {
     id: 4,
@@ -67,7 +67,7 @@ const whatIsIn2sql = {
       description:
         'Установщик, который расширяет программный код Excel или web приложение которое интегрируется в Excel.',
       img: {
-        path: '/images/developer.png',
+        path: '/images/developer.svg',
         size: {
           w: 96,
           h: 96,
@@ -80,7 +80,7 @@ const whatIsIn2sql = {
       description:
         'Упрощение совместной обработки данных для бизнес пользователей data. Финансисты, Маркетинг и Комплаенс будут иметь удобный доступ к данным.',
       img: {
-        path: '/images/code.png',
+        path: '/images/code.svg',
         size: {
           w: 96,
           h: 96,
@@ -92,7 +92,7 @@ const whatIsIn2sql = {
       title: 'Сокращение инструментов для редактирования данных',
       description: 'Избавим вас от MDM, FDQM, CPM, и ETL процессов.',
       img: {
-        path: '/images/web.png',
+        path: '/images/web.svg',
         size: {
           w: 96,
           h: 96,
@@ -105,7 +105,7 @@ const whatIsIn2sql = {
       description: `Плагины в Excel (Р7/Мой Офис/OpenOffice ) для интеграции c базами данных и серверами приложений (C#/JavaScript).
 Собственный сервер приложений (Python/Pandas/PySpark) для процессинга расчетов.`,
       img: {
-        path: '/images/settings.png',
+        path: '/images/settings.svg',
         size: {
           w: 96,
           h: 96,

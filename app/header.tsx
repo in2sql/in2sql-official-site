@@ -55,9 +55,9 @@ export const Header: FC<{ s: Record<string, string> }> = ({ s }) => {
         </div>
 
         <div className={s.header_buttons}>
-          <Button outline onClick={handleClick}>
+          {/* <Button outline onClick={handleClick}>
             Попробовать бесплатно
-          </Button>
+          </Button> */}
           <Button main onClick={handleClick}>
             <Link href={'/try-free'}>Получить 1 год бесплатно</Link>
           </Button>

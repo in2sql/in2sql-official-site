@@ -37,7 +37,7 @@ const Teaser = () => {
     <div className={clsx(s.teaser)}>
       <div className={s.imageContainer}>
         <Image
-          src="/images/teaser.png"
+          src="/images/teaser.svg"
           alt="Teaser"
           width={244}
           height={204}
@@ -57,7 +57,7 @@ const Teaser = () => {
           </div>
           <div className={s.smallImageContainer}>
             <Image
-              src="/images/teaser.png"
+              src="/images/teaser.svg"
               alt="Teaser"
               width={86}
               height={72}

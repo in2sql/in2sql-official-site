@@ -46,18 +46,20 @@ export default function RootLayout({
               </div>
 
               <div>
-                <div>+7 495 000 00 00 — Бизнесу и ИП</div>
-                <div>+7 495 111 11 11 — Частным клиентам</div>
+                <div>+ 7 903 1576442 — Бизнесу и ИП</div>
+                <div>+ 7 903 1576442 — Частным клиентам</div>
               </div>
 
               <div className={s.social}>
-                <Image
-                  src="/images/icon-telegram.svg"
-                  alt="icon telegram"
-                  width={24}
-                  height={24}
-                  priority
-                />
+                <a href="https://t.me/DataCons">
+                  <Image
+                    src="/images/icon-telegram.svg"
+                    alt="icon telegram"
+                    width={24}
+                    height={24}
+                    priority
+                  />
+                </a>
               </div>
             </div>
           </div>
@@ -77,7 +79,7 @@ export default function RootLayout({
           </nav>
 
           <div className={clsx(s.content_item, s.copyright)}>
-            {`© 2021-${new Date().getFullYear()}. ООО «ЧТО ТО», официальный сайт in2sql. Передавая нам
+            {`© 2020-${new Date().getFullYear()}. ООО «Датаконс». Передавая нам
             свои контактные данные, мы гарантируем безопасность их хранения.`}
           </div>
         </footer>
