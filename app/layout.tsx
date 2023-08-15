@@ -46,8 +46,7 @@ export default function RootLayout({
               </div>
 
               <div>
-                <div>+ 7 903 1576442 — Бизнесу и ИП</div>
-                <div>+ 7 903 1576442 — Частным клиентам</div>
+                <div>+ 7 903 1576442</div>
               </div>
 
               <div className={s.social}>

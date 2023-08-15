@@ -1,5 +1,5 @@
 'use client'
-
+import { Roboto } from 'next/font/google'
 import Image from 'next/image'
 import Teaser from '../components/teaser/teaser'
 
@@ -12,12 +12,15 @@ import { BaseSyntheticEvent, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { sendToGoogleSheet } from '../handle-form'
+import clsx from 'clsx'
 
 type SubmitData = {
   name: string
   email: string
   appeal: string
 }
+
+const inter = Roboto({ subsets: ['cyrillic'], weight: '400' })
 
 const initialState: SubmitData = {
   name: '',
@@ -63,7 +66,7 @@ const Contacts = () => {
     <div className={s.wrapper}>
       <div className={s.title}>Контактные данные</div>
 
-      <div className={s.main}>
+      <div className={`${s.main} ${clsx(inter.className)}`}>
         <div className={s.row1}>
           <div className={s.left}>
             <div>
@@ -72,10 +75,10 @@ const Contacts = () => {
             <br />
             <div>
               <span style={{ color: '#004077' }}>Почта: </span>
-              erasyuk@gmail.com
+              er@exceldb.pro
             </div>
             <br /> 142181, Московская область, город Подольск, деревня Бережки,
-            тер. Каскад Парк, д. 43, кв. 3
+            тер. Каскад Парк, д. 43, оф. 3
             <br />
             <br /> ИНН 5074066799
             <br /> ОГРН 1205000100997
