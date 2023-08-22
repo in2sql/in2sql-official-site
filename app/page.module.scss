@@ -34,7 +34,6 @@
   background-color: rgba(white, 0.75);
   transform: translate(0px, -130px);
   overflow: hidden;
-  overflow-x: auto;
 
   .bar {
     min-width: 230px;
@@ -72,6 +71,9 @@
 
   @media (max-width: map.get($grid-breakpoints, 'lg')) {
     transform: translate(0px, -94px);
+  }
+  @media (max-width: map.get($grid-breakpoints, 'xxl')) {
+    overflow-x: auto;
   }
 }
 
