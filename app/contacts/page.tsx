@@ -13,6 +13,7 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { sendToGoogleSheet } from '../handle-form'
 import clsx from 'clsx'
+import Team from '../components/team/team'
 
 type SubmitData = {
   name: string
@@ -90,26 +91,9 @@ const Contacts = () => {
               loading="lazy"
             ></iframe>
           </div>
-          <form className={s.contactsForm} onSubmit={handleSubmit(onSubmit)}>
-            <div className={s.inputComponent}>
-              <label>Электронная почта</label>
-              <input type="email" {...register('email')} />
-              {renderErrorMessage('email')}
-            </div>
-            <div className={s.inputComponent}>
-              <label>Ваше имя</label>
-              <input type="text" {...register('name')} />
-              {renderErrorMessage('name')}
-            </div>
-            <div className={s.textAreaComponent}>
-              <label>Обращение</label>
-              <textarea rows={5} {...register('appeal')}></textarea>
-              {renderErrorMessage('appeal')}
-            </div>
-            <button type="submit">Отправить</button>
-
-            <Guard width="100%" />
-          </form>
+          <div className={s.teamContainer}>
+            <Team />
+          </div>
         </div>
         <div className={s.row2}>
           <Teaser />
