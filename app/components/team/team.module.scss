@@ -1,0 +1,14 @@
+.header {
+  font-size: x-large;
+  margin-bottom: 0.5rem;
+}
+
+.teamRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  img {
+    border-radius: 50%;
+  }
+}
